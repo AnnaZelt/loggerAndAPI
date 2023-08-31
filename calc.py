@@ -1,8 +1,8 @@
 from enum import Enum
 import logging
 
-logging.basicConfig(level=logging.ERROR,filename='error.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
-logging.basicConfig(level=logging.INFO,filename='info.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.ERROR,filename='calc_error.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,filename='calc_info.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 class Actions(Enum):
     MULTIPLICATION = 1

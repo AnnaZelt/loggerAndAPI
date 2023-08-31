@@ -1,4 +1,7 @@
 from enum import Enum
+import logging
+
+logging.basicConfig(level=logging.INFO,filename='grocery_HW_info.log', filemode='a', format='%(name)s - %(levelname)s - %(message)s')
 
 class Actions(Enum):
     DISPLAY_PRODUCTS = 1
@@ -14,6 +17,15 @@ class Product:
 
     def __str__(self) -> str:
         return (f"{self.product_name}: {self.product_price} NIS\n{self.amount_in_storage} units in stock.\n")
+    
+    def add_stock(self):
+        # try:
+        #     try:
+                self.amount_in_storage = int((input("Add to stock: ")))
+                logging.info("Stock changed.", exc_info=True)
+            # except Exception as e:
+        # except Exception as e:
+            
 
 class Cart(Product):
     def __init__(self) -> None:
@@ -24,15 +36,16 @@ class Cart(Product):
         return "\n".join(f"{product.product_name} x{product.amount_in_storage}" for product in self.product_list)+f"\n\nTotal: {self.total} NIS"
     
     def add_product(self, product):
-        self.product_list.append(product)
+        # try:
+            self.product_list.append(product)
+        # except Exception as e:
+            logging.info("Product added.", exc_info=True)
 
 def menu():
     global cart
     while(True):
-        for action in Actions:
-            print(f"{action.value} - {action.name}")
-        user_selection=Actions(int(input("What would you like to do? ")))
-        if user_selection == Actions.ADD_TO_CART: 
+        user_selection = menu_selection()
+        if user_selection == Actions.ADD_TO_CART:
             add_to_cart()
         # if user_selection == Actions.ADD_TO_CART: 
         #     selected_name = input("Add: (by name) ")
@@ -62,36 +75,57 @@ def menu():
             display_cart()
         if user_selection == Actions.EXIT: 
             save()
+            logging.shutdown()
             return
 
+def menu_selection():
+    # try:
+    #     try:
+            for action in Actions:
+                print(f"{action.value} - {action.name}")
+            user_selection=Actions(int(input("What would you like to do? ")))
+            logging.info("Menu selection.", exc_info=True) 
+            return user_selection
+        # except Exception as e:
+            
+    # except Exception as e:
+        
+
 def display_cart():
-    print("\nProducts in cart:")
-    print(f"{cart}\n")
+    # try:
+        print("\nProducts in cart:")
+        print(f"{cart}\n")
+    # except Exception as e
+        logging.info("Cart display.", exc_info=True)
 
 def display_products():
-    print("\nAvailable products: ")
-    for product in products:
-        print(product)
+    # try:            
+        print("\nAvailable products: ")
+        for product in products:
+            print(product)
+    # except Exception as e:
+        logging.info("Products display.", exc_info=True)            
 
 def add_to_cart():
     selected_name = input("Add: (by name) ").lower()
-    product_found = False            
+    product_found = False          
     for cart_product in cart.product_list:
-        if cart_product.product_name.lower() == selected_name:
-            cart_product.amount_in_storage += 1
-            cart.total += cart_product.product_price
-            product_found = True
-            print(f"Added 1 {cart_product.product_name} to cart.")
-            break 
+            if cart_product.product_name.lower() == selected_name:
+                cart_product.amount_in_storage += 1
+                cart.total += cart_product.product_price
+                product_found = True
+                print(f"Added 1 {cart_product.product_name} to cart.")
+                break 
     if not product_found:
-        matching_products = [product for product in products if product.product_name.lower() == selected_name]
-        if matching_products:
-            new_cart_product = Product(matching_products[0].product_name, matching_products[0].product_price, 1)
-            cart.add_product(new_cart_product)
-            cart.total += new_cart_product.product_price
-            print(f"Added 1 {new_cart_product.product_name} to cart.")
-        else:
-            print("Product not found.")
+        # try:
+            matching_products = [product for product in products if product.product_name.lower() == selected_name]
+            if matching_products:
+                new_cart_product = Product(matching_products[0].product_name, matching_products[0].product_price, 1)
+                cart.add_product(new_cart_product)
+                cart.total += new_cart_product.product_price
+                print(f"Added 1 {new_cart_product.product_name} to cart.")
+        # except Exception as e:
+            logging.info("Added new item to cart.", exc_info=True)
     print("\n")
 
 def save():
