@@ -1,3 +1,5 @@
+# GROCERY_HW
+
 # Actions
     An enum class object that assigns actions to numbers with the following actions:
     ADD_TO_CART, DISPLAY_PRODUCTS, DISPLAY_CART and EXIT.
