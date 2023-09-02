@@ -1,0 +1,4 @@
+root - INFO - Multiplication result: 6.000000
+root - INFO - Addition result: 1.000000
+root - INFO - Division result: 0.000000
+root - ERROR - Cannot divide by zero.

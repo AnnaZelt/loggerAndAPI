@@ -19,3 +19,15 @@
 
 # testing
     A method for debugging purposes that builds a fake list of products.
+
+# CALC
+
+# Actions
+    An enum class object that assigns actions to numbers with the following actions:
+    ADDITION, DIVISION, ,MULTIPLICATION and EXIT.
+
+# add/mult
+    Addition and multiplication respectively, logs an error if input is NaN.
+
+# div
+    Multiplication, checks if n2 isn't 0 and logs an error if it is or if n1 or n2 are NaN.
