@@ -31,3 +31,14 @@
 
 # div
     Multiplication, checks if n2 isn't 0 and logs an error if it is or if n1 or n2 are NaN.
+
+# weather_requests
+
+# menu_selection and menu
+    A method for getting input ffrom the user selection and activating sub-methods respectively.
+
+# location
+    Runs at the beginning before menu, returns the location of the request.
+
+# current_weather and forecast_weather
+    Returns the current and forecast weather of the above location respectively.
